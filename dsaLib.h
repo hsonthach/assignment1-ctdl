@@ -142,8 +142,9 @@ public:
 
 
 	bool insert(int index, T value) {
-		if (index > size) index = size; 
-		if (index < 0) index = 0; 
+		if (index > size || index < 0) return false; 
+		/*if (index > size) index = size; 
+		if (index < 0) index = 0; */
 
 
 		if (index == 0) {
@@ -161,6 +162,7 @@ public:
 			L1Item<T> *next = prev->pNext;
 			prev->pNext = pNewItem;
 			pNewItem->pNext = next;
+			size++;
 		}
 
 		return true;
